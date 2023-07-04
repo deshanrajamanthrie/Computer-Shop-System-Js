@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Compute System (Pos)</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="./assets/boostrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/style/normalize.css">
+    <style>
+        /* *{
+             background-color: whitesmoke;
+
+         }*/
+        body {
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100vw;
+            height: 10vh;
+            background-color: #CFE2FF;
+            /*background: #1c315d;*/
+            /* position: fixed;*/
+            /*margin-top: 10vh;*/
+        }
+
+        #home-1stPage {
+            width: 100vw;
+
+            height: 90vh;
+            background-color: whitesmoke;
+
+        }
+
+        #customer-2ndPage {
+            width: 100vw;
+            height: 100vh;
+        }
+        #item-3rdPage{
+            width: 100vw;
+            height: 100vh;
+        }
+
+
+        .logo-png {
+            width: 50px;
+            height: 50px;
+        }
+
+        label-color {
+        !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid bg-primary-subtle shadow-sm">
+            <img class="logo-png" src="./assets/img/ux.png" alt="computer Logo">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ps-5" id="navbarNav">
+                <ul class="navbar-nav text-body-secondary">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ">Orders</a>
+                    </li>
+                </ul>
+            </div>
+            <p CLASS="mt-2 fs-5 fw-medium text-danger shadow me-3">TECNO COMPUTERS</p>
+        </div>
+
+    </nav>
+
+
+</header>
+<main>
+    <main id="home-1stPage">
+
+    </main>
+    <main id="customer-2ndPage" class="customer-page bg-gradient bg-dark-subtle">
+        <section class="container-fluid ps-5 ">
+            <section class="row">
+                <div class="col mt-lg-5 ">
+                    <label class="label-color  mt-4 " for="txtcustomerid">Customer ID</label>
+                    <input id="txtcustomerid" class="form-control form-control-sm  w-75" type="text"
+                           placeholder="ID" aria-label="default input example">
+                    <label class=" label-color  mt-4" for="txtcustomerName">Customer Name</label>
+                    <input  id="txtcustomerName" class="form-control form-control-sm w-75" type="text" placeholder="Name"
+                           aria-label="default input example">
+                    <label class="label-color mt-4" for="txtcustomerAddres">Customer Address</label>
+                    <input id="txtcustomerAddres" class="form-control  form-control-sm w-75" type="text" placeholder="Address"
+                           aria-label="default input example">
+                    <label class="label-color mt-4" for="txtcustomerContact">Customer Contact Number</label>
+                    <input id="txtcustomerContact" class="form-control form-control-sm w-75" type="text" placeholder="Contact"
+                           aria-label="default input example">
+
+
+                    <form class=" row g-2 mt-4">
+
+                        <div class="col-auto">
+                            <label for="searchCustomer" class="visually-hidden">Password</label>
+                            <input type="text" class="form-control" id="searchCustomer" placeholder="Search Customer">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Search</button>
+                        </div>
+                    </form>
+                    <div class="d-grid gap-2 d-md-block col-sm-6">
+                        <button class="btn btn-outline-success w-25" type="button">Save</button>
+                        <button class="btn btn-outline-info w-25" type="button">Update</button>
+                        <button class="btn btn-outline-danger w-25" type="button">Delete</button>
+                    </div>
+                </div>
+                <div class="col mt-lg-5  col-sm-6 me-5">     <!-- table Represent-->
+                    <table class="table mt-5 w-100  bg-opacity-25">
+                        <thead class="table-dark ">
+                        <tr>
+                            <th>#Id</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Contact</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider bg-opacity-25">
+                        <tr>
+                            <td>C0-001</td>
+                            <td>Deshan Maduranga</td>
+                            <td>Kalutara</td>
+                            <td>0766543231</td>
+
+                        </tr>
+                        <tr>
+                            <td>C0-002</td>
+                            <td>Pawan</td>
+                            <td>Galle</td>
+                            <td>0716543231</td>
+
+                        </tr>
+                        </tbody>
+
+
+                    </table>
+                </div>
+
+
+            </section>
+            <section class="row">
+
+            </section>
+        </section>
+
+
+    </main>
+    <main id="item-3rdPage"  class="customer-page bg-warning  bg-gradient bg-dark-subtle">
+        <section class="container-fluid ps-5 ">
+            <section class="row">
+                <div class="col mt-lg-5 ">
+                    <label class="label-color  mt-4 " for="txtItemid">Item ID</label>
+                    <input id="txtItemid" class="form-control form-control-sm  w-75" type="text"
+                           placeholder="ID" aria-label="default input example">
+
+                    <label class=" label-color  mt-4" for="txtItemName">Item Name</label>
+                    <input id="txtItemName" class="form-control form-control-sm w-75" type="text" placeholder="Name"
+                           aria-label="default input example">
+
+                    <label class="label-color mt-4" for="txtItemqty">Item Qty</label>
+                    <input id="txtItemqty" class="form-control  form-control-sm w-75" type="text" placeholder="Qty"
+                           aria-label="default input example">
+
+                    <label class="label-color mt-4" for="txtItemUnitPrize">Item Unit Price</label>
+                    <input  id="txtItemUnitPrize" class="form-control form-control-sm w-75" type="text" placeholder="Unit Price"
+                           aria-label="default input example">
+                    <!--    ////////////////////////////////////////////////////-->
+                    <form class=" row g-2 mt-4">
+
+                        <div class="col-auto">
+                            <label for="searchItem" class="visually-hidden">Password</label>
+                            <input type="text" class="form-control" id="searchItem" placeholder="Search Item">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Search</button>
+                        </div>
+                    </form>
+                    <div class="d-grid gap-2 d-md-block col-sm-6">
+                        <button class="btn btn-outline-success w-25" type="button">Save</button>
+                        <button class="btn btn-outline-info w-25" type="button">Update</button>
+                        <button class="btn btn-outline-danger w-25" type="button">Delete</button>
+                    </div>
+                </div>
+                <div class="col mt-lg-5  col-sm-6 me-5">     <!-- table Represent-->
+                    <table class="table mt-5 w-100  bg-opacity-25">
+                        <thead class="table-dark ">
+                        <tr>
+                            <th>#Id</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Contact</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider bg-opacity-25">
+                        <tr>
+                            <td>C0-001</td>
+                            <td>Deshan Maduranga</td>
+                            <td>Kalutara</td>
+                            <td>0766543231</td>
+
+                        </tr>
+                        <tr>
+                            <td>C0-002</td>
+                            <td>Pawan</td>
+                            <td>Galle</td>
+                            <td>0716543231</td>
+
+                        </tr>
+                        </tbody>
+
+
+                    </table>
+                </div>
+
+
+            </section>
+            <section class="row">
+
+            </section>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    <main></main>
+
+
+</main>
+
+
+</body>
+</html>
