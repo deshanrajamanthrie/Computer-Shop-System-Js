@@ -73,17 +73,17 @@
             <div class="collapse navbar-collapse ps-5" id="navbarNav">
                 <ul class="navbar-nav text-body-secondary">
                     <li class="nav-item">
-                        <a class="nav-link active" id="homePage-Selector" aria-current="page"
+                        <a class="nav-link" id="homePage-Selector" aria-current="page"
                            href="#home-1stPage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="customerPage-Selector" href="#customer-2ndPage">Customers</a>
+                        <a class="cust1 nav-link" id="customerPage-Selector" href="#customer-2ndPage">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="itemPage-Selector" href="#item-3rdPage">Items</a>
+                        <a class="item1 nav-link" id="itemPage-Selector" href="#item-3rdPage">Items</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="placeOder-Selector" href="#placeOrderForm-4thPage">Orders</a>
+                        <a class=" order1 nav-link" id="placeOder-Selector" href="#placeOrderForm-4thPage">Orders</a>
                     </li>
                 </ul>
             </div>
@@ -250,12 +250,8 @@
 </main>
 <script src="./assets/jquery/jquery-3.6.4.min%20(1).js"></script>
 <script>
-   /* $("#home-1stPage").css('display', 'block');
-    $("#main-nav-bar").css('display', 'block');
-    $("#customer-2ndPage").css('display', 'none');
-    $("#item-3rdPage").css('display', 'none');
-    $("#placeOrderForm-4thPage").css('display', 'none');*/
 
+    /* var selectPage=$(".cust1,.item1",).css('color','black');*/
     $("#customerPage-Selector").click(function () {
         $("#home-1stPage").css('display', 'none');
         $("#main-nav-bar").css('display', 'block');
