@@ -34,12 +34,12 @@
 
         #customer-2ndPage {
             width: 100vw;
-            height: 100vh;
+            height: 90vh;
         }
 
         #item-3rdPage {
             width: 100vw;
-            height: 100vh;
+            height: 90vh;
         }
 
 
@@ -52,11 +52,18 @@
         !important;
             font-weight: bold;
         }
+
+        #placeOrderForm-4thPage {
+            width: 100vw;
+            height: 90vh;
+        }
+
+
     </style>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg ">
+    <nav id="main-nav-bar" class="navbar navbar-expand-lg ">
         <div class="container-fluid bg-primary-subtle shadow-sm">
             <img class="logo-png" src="./assets/img/ux.png" alt="computer Logo">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -66,16 +73,17 @@
             <div class="collapse navbar-collapse ps-5" id="navbarNav">
                 <ul class="navbar-nav text-body-secondary">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" id="homePage-Selector" aria-current="page"
+                           href="#home-1stPage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Customers</a>
+                        <a class="nav-link" id="customerPage-Selector" href="#customer-2ndPage">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Items</a>
+                        <a class="nav-link" id="itemPage-Selector" href="#item-3rdPage">Items</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ">Orders</a>
+                        <a class="nav-link" id="placeOder-Selector" href="#placeOrderForm-4thPage">Orders</a>
                     </li>
                 </ul>
             </div>
@@ -92,9 +100,9 @@
     </main>
     <main id="customer-2ndPage" class="customer-page bg-gradient bg-dark-subtle">
         <section class="container-fluid ps-5 ">
-            <span class="container mt-5 h4"><div class="align-items-end"> CUSTOMER MANAGE</div></span>
+            <span class="container  fw-bold  h4"><div class="align-items-end"> CUSTOMER MANAGE</div></span>
             <section class="row">
-                <div class="col mt-lg-5 ">
+                <div class="col ">
                     <label class="label-color  mt-4 " for="txtcustomerid">Customer ID</label>
                     <input id="txtcustomerid" class="form-control form-control-sm  w-75" type="text"
                            placeholder="ID" aria-label="default input example">
@@ -127,7 +135,7 @@
                         <button class="btn btn-outline-danger w-25" type="button">Delete</button>
                     </div>
                 </div>
-                <div class="col mt-lg-5  col-sm-6 me-5">     <!-- table Represent-->
+                <div class="col   col-sm-6 me-5">     <!-- table Represent-->
                     <table class="table mt-5 w-100  bg-opacity-25">
                         <thead class="table-dark ">
                         <tr>
@@ -169,9 +177,9 @@
     </main>
     <main id="item-3rdPage" class="customer-page bg-warning  bg-gradient bg-dark-subtle">
         <section class="container-fluid ps-5 ">
-            <span class="container mt-5 h4"><div class="align-items-end"> Item MANAGE</div></span>
+            <span class="container   fw-bold h4"><div class="align-items-end"> ITEM MANAGE</div></span>
             <section class="row">
-                <div class="col mt-lg-5 ">
+                <div class="col  ">
                     <label class="label-color  mt-4 " for="txtItemid">Item ID</label>
                     <input id="txtItemid" class="form-control form-control-sm  w-75" type="text"
                            placeholder="ID" aria-label="default input example">
@@ -205,7 +213,7 @@
                         <button class="btn btn-outline-danger w-25" type="button">Delete</button>
                     </div>
                 </div>
-                <div class="col mt-lg-5  col-sm-6 me-5">     <!-- table Represent-->
+                <div class="col col-sm-6 me-5">     <!-- table Represent-->
                     <table class="table mt-5 w-100  bg-opacity-25">
                         <thead class="table-dark ">
                         <tr>
@@ -217,26 +225,16 @@
                         </thead>
                         <tbody class="table-group-divider bg-opacity-25">
                         <tr>
-                            <td>C0-001</td>
-                            <td>Deshan Maduranga</td>
-                            <td>Kalutara</td>
-                            <td>0766543231</td>
+                            <td>I0-001</td>
+                            <td>AsusLap</td>
+                            <td>10</td>
+                            <td>100000.00</td>
 
                         </tr>
-                        <tr>
-                            <td>C0-002</td>
-                            <td>Pawan</td>
-                            <td>Galle</td>
-                            <td>0716543231</td>
 
-                        </tr>
                         </tbody>
-
-
                     </table>
                 </div>
-
-
             </section>
             <section class="row">
 
@@ -244,12 +242,55 @@
         </section>
     </main>
     <main id="placeOrderForm-4thPage">
-
+        <!--place Order Content-->
 
     </main>
 
 
 </main>
+<script src="./assets/jquery/jquery-3.6.4.min%20(1).js"></script>
+<script>
+   /* $("#home-1stPage").css('display', 'block');
+    $("#main-nav-bar").css('display', 'block');
+    $("#customer-2ndPage").css('display', 'none');
+    $("#item-3rdPage").css('display', 'none');
+    $("#placeOrderForm-4thPage").css('display', 'none');*/
+
+    $("#customerPage-Selector").click(function () {
+        $("#home-1stPage").css('display', 'none');
+        $("#main-nav-bar").css('display', 'block');
+        $("#customer-2ndPage").css('display', 'block');
+        $("#item-3rdPage").css('display', 'none');
+        $("#placeOrderForm-4thPage").css('display', 'none');
+
+    });
+    $("#itemPage-Selector").click(function () {
+        $("#home-1stPage").css('display', 'none');
+        $("#main-nav-bar").css('display', 'block');
+        $("#customer-2ndPage").css('display', 'none');
+        $("#item-3rdPage").css('display', 'block');
+        $("#placeOrderForm-4thPage").css('display', 'none');
+
+    });
+    $("#placeOder-Selector").click(function () {
+        $("#home-1stPage").css('display', 'none');
+        $("#main-nav-bar").css('display', 'block');
+        $("#customer-2ndPage").css('display', 'none');
+        $("#item-3rdPage").css('display', 'none');
+        $("#placeOrderForm-4thPage").css('display', 'block');
+
+    });
+    $("#homePage-Selector").click(function () {
+        $("#home-1stPage").css('display', 'block');
+        $("#main-nav-bar").css('display', 'block');
+        $("#customer-2ndPage").css('display', 'none');
+        $("#item-3rdPage").css('display', 'none');
+        $("#placeOrderForm-4thPage").css('display', 'none');
+
+    });
+
+
+</script>
 
 
 </body>
