@@ -130,7 +130,7 @@
                         </div>
                     </form>
                     <div class="d-grid gap-2 d-md-block col-sm-6">
-                        <button class="btn btn-outline-success w-25" type="button">Save</button>
+                        <button id="btnSaveCustomer" class="btn btn-outline-success w-25" type="button">Save</button>
                         <button class="btn btn-outline-info w-25" type="button">Update</button>
                         <button class="btn btn-outline-danger w-25" type="button">Delete</button>
                     </div>
@@ -249,6 +249,7 @@
 
 </main>
 <script src="./assets/jquery/jquery-3.6.4.min%20(1).js"></script>
+
 <script>
 
     /* var selectPage=$(".cust1,.item1",).css('color','black');*/
@@ -286,7 +287,17 @@
     });
 
 
+    /* $("#btnSaveCustomer").on('click',function () {
+         alert("Hello");
+     });*/
+
+
 </script>
+<script type="module" src="./db/db.js"></script>
+
+<script type="module" src="./controller/ItemController.js"></script>
+
+<script type="module" src="./controller/CustomerController.js"></script>
 
 
 </body>
