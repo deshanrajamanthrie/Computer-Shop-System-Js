@@ -23,17 +23,20 @@ export class CustomerController {
         let address = $("#txtcustomerAddres").val().trim();
         let contact = $("#txtcustomerContact").val().trim();
         let customerObj = new Customer(id, name, address, contact);
-        if (customerObj.id === "") {     //================notiyfy the text fields ara empty or not
-            alert("Please Include The Data !");
-            return;
-        } else if (customerObj.name === "") {
-            alert("Please Include The Data !");
-            return;
-        } else if (customerObj.address === "") {
-            alert("Please Include The Data !");
-            return;
-        } else if (customerObj.contact === "") {
-            alert("Please Include The Data !");
+        if (customerObj.id === "") {
+            if (customerObj.name === "") {
+                if (customerObj.address === "") {
+                    if (customerObj.contact === "") {
+                        alert("Cannot added the table Please Enter the Contact Number");
+                        return;
+                    }
+                    alert("Cannot added the table Please Enter the Address");
+                    return;
+                }
+                alert("Cannot added the table Please Enter the Name ");
+                return;
+            }
+            alert("Cannot added the table Please Enter the Id ");
             return;
         } else {
             this.saveCustomer(customerObj);
@@ -67,6 +70,11 @@ export class CustomerController {
         $("#txtcustomerName").val("");
         $("#txtcustomerAddres").val("");
         $("#txtcustomerContact").val("");
+    }
+
+
+    validation(){
+
     }
 
 
