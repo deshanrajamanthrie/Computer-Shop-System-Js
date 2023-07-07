@@ -39,6 +39,7 @@ export class CustomerController {
             let printRow = `<tr><th>${customerArray[i].id}</th><th>${customerArray[i].name}</th><th>${customerArray[i].address}</th><th>${customerArray[i].contact}</th></tr>`;
             console.log(printRow);
             $("#customerTable").append(printRow);
+            this.cleartextFields();
         }
     }
 
