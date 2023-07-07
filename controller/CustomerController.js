@@ -12,10 +12,10 @@ export class CustomerController {
 
     customerHandle() {
         for (let i of customerArray) {
-            if (i.id === $("#txtcustomerid").val().trim()) {
-                alert("Customer Exists");
+            if (i.id === $("#txtcustomerid").val().trim()) { //Check the customer Id before include it
+                alert("Already Customer has been Exists!");
                 this.cleartextFields();
-                return;
+                return;     //not run in the code
             }
         }
         let id = $("#txtcustomerid").val().trim();
@@ -23,18 +23,36 @@ export class CustomerController {
         let address = $("#txtcustomerAddres").val().trim();
         let contact = $("#txtcustomerContact").val().trim();
         let customerObj = new Customer(id, name, address, contact);
-        this.saveCustomer(customerObj);
+        if (customerObj.id === "") {     //================notiyfy the text fields ara empty or not
+            alert("Please Include The Data !");
+            return;
+        } else if (customerObj.name === "") {
+            alert("Please Include The Data !");
+            return;
+        } else if (customerObj.address === "") {
+            alert("Please Include The Data !");
+            return;
+        } else if (customerObj.contact === "") {
+            alert("Please Include The Data !");
+            return;
+        } else {
+            this.saveCustomer(customerObj);
+        }
+
 
     }
 
-    saveCustomer(cutomerObj) {           // only customer Save
+    saveCustomer(cutomerObj) {// ==================================================only customer Save
+
         customerArray.push(cutomerObj);
         this.loadAllCustomer();
+
+
     }
 
 
     loadAllCustomer() {
-        $("#customerTable").empty();    //this use statement for do empty table
+        $("#customerTable").empty();                                 //this use statement for do empty table
         for (let i in customerArray) {
             let printRow = `<tr><th>${customerArray[i].id}</th><th>${customerArray[i].name}</th><th>${customerArray[i].address}</th><th>${customerArray[i].contact}</th></tr>`;
             console.log(printRow);
