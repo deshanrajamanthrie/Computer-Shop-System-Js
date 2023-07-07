@@ -11,7 +11,13 @@ export class CustomerController {
 
 
     customerHandle() {
-
+        for (let i of customerArray) {
+            if (i.id === $("#txtcustomerid").val().trim()) {
+                alert("Customer Exists");
+                this.cleartextFields();
+                return;
+            }
+        }
         let id = $("#txtcustomerid").val().trim();
         let name = $("#txtcustomerName").val().trim();
         let address = $("#txtcustomerAddres").val().trim();
@@ -21,21 +27,27 @@ export class CustomerController {
 
     }
 
-    saveCustomer(cutomerObj) {
+    saveCustomer(cutomerObj) {           // only customer Save
         customerArray.push(cutomerObj);
         this.loadAllCustomer();
     }
 
 
     loadAllCustomer() {
-        $("#customerTable").empty();
+        $("#customerTable").empty();    //this use statement for do empty table
         for (let i in customerArray) {
             let printRow = `<tr><th>${customerArray[i].id}</th><th>${customerArray[i].name}</th><th>${customerArray[i].address}</th><th>${customerArray[i].contact}</th></tr>`;
             console.log(printRow);
             $("#customerTable").append(printRow);
         }
+    }
 
 
+    cleartextFields() {
+        $("#txtcustomerid").val("");
+        $("#txtcustomerName").val("");
+        $("#txtcustomerAddres").val("");
+        $("#txtcustomerContact").val("");
     }
 
 
