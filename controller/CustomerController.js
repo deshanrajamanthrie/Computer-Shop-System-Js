@@ -11,22 +11,28 @@ export class CustomerController {
 
 
     customerHandle() {
-        let custId = $("#txtcustomerid").val().trim();
-        let custName = $("#txtcustomerName").val().trim();
-        let custAddress = $("#txtcustomerAddres").val().trim();
-        let custContact = $("#txtcustomerContact").val().trim();
-        this.saveCustomer = new Customer(custId, custName, custAddress, custContact);
+
+        let id = $("#txtcustomerid").val().trim();
+        let name = $("#txtcustomerName").val().trim();
+        let address = $("#txtcustomerAddres").val().trim();
+        let contact = $("#txtcustomerContact").val().trim();
+        let customerObj = new Customer(id, name, address, contact);
+        this.saveCustomer(customerObj);
+
     }
 
-    saveCustomer(customer) {
-        customerArray.push(customer);
+    saveCustomer(cutomerObj) {
+        customerArray.push(cutomerObj);
         this.loadAllCustomer();
-
     }
+
 
     loadAllCustomer() {
-        for () {
-
+        $("#customerTable").empty();
+        for (let i in customerArray) {
+            let printRow = `<tr><th>${customerArray[i].id}</th><th>${customerArray[i].name}</th><th>${customerArray[i].address}</th><th>${customerArray[i].contact}</th></tr>`;
+            console.log(printRow);
+            $("#customerTable").append(printRow);
         }
 
 
