@@ -9,17 +9,14 @@ export class CustomerController {
 
     }
 
-
     customerHandle() {
         for (let i of customerArray) {
             if (i.id === $("#txtcustomerid").val().trim()) { //Check the customer Id before include it
                 alert("Already Customer has been Exists!");
                 this.cleartextFields();
-                return;                                           //==================================not run in the code
+                return;                                       //=======================================================not run in the code
             }
-
         }
-
 
         if (this.IsValid()) {
             let id = $("#txtcustomerid").val().trim();
@@ -36,14 +33,13 @@ export class CustomerController {
         }
     }
 
-    saveCustomer(cutomerObj) {        // ==================================================only customer Save
+    saveCustomer(cutomerObj) {                           //===================================================only customer Save
 
         customerArray.push(cutomerObj);
         this.loadAllCustomer();
 
 
     }
-
 
     loadAllCustomer() {
         $("#customerTable").empty();                                 //this use statement for do empty table
@@ -54,7 +50,6 @@ export class CustomerController {
             this.cleartextFields();
         }
     }
-
 
     cleartextFields() {
         $("#txtcustomerid").val("");
@@ -73,37 +68,39 @@ export class CustomerController {
 
 
         if (!isId.test($("#txtcustomerid").val())) {
-            $("#txtcustomerid").css('border', '1px solid darkred');
-            $("#error-id").text(" Follow This : C001").css('color', 'darkred');
+            $("#txtcustomerid").css('border', '2px solid #d63031');
+            $("#error-id").text(" Follow This : C001").css('color', '#d63031');
             return false;
         } else {
-            if (!isName.test($("#txtcustomerName").val())) {
-                $("#txtcustomerName").css('border', '1px solid darkred');
-                $("#error-name").text("Follow This: Saman Kumara").css('color', 'darkred');
-                return false;
-            } else {
-                if (!isAddress.test($("#txtcustomerAddres").val())) {
-                    $("#txtcustomerAddres").css('border', '1px solid darkred');
-                    $("#error-address").text("Follow This:Colombo").css('color', 'darkred');
-                    return false;
-                } else {
-                    if (!isContact.test($("#txtcustomerContact").val())) {
-                        $("#txtcustomerContact").css('border', '1px solid darkred');
-                        $("#error-contact").text("Follow This :0777777777 ").css('color', 'darkred');
-                        return false;
-                    } else {
-                        return true;
-                    }
-                }
-            }
-
-
+            $("#txtcustomerid").css('border', '2px solid #26de81');
+            $("#error-id").text("");
         }
-
-
+        if (!isName.test($("#txtcustomerName").val())) {
+            $("#txtcustomerName").css('border', '2px solid #d63031');
+            $("#error-name").text("Follow This: Saman Kumara").css('color', '#d63031');
+            return false;
+        } else {
+            $("#txtcustomerName").css('border', '2px solid #26de81');
+            $("#error-name").text("");
+        }
+        if (!isAddress.test($("#txtcustomerAddres").val())) {
+            $("#txtcustomerAddres").css('border', '2px solid #d63031');
+            $("#error-address").text("Follow This:Colombo").css('color', '#d63031');
+            return false;
+        } else {
+            $("#txtcustomerAddres").css('border', '2px solid #26de81');
+            $("#error-address").text("");
+        }
+        if (!isContact.test($("#txtcustomerContact").val())) {
+            $("#txtcustomerContact").css('border', '2px solid #d63031');
+            $("#error-contact").text("Follow This :0777777777 ").css('color', '#d63031');
+            return false;
+        } else {
+            $("#txtcustomerContact").css('border', '2px solid #26de81');
+            $("#error-contact").text("");
+        }
+        return true;
     }
-
-
 }
 
 
