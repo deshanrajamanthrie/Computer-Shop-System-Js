@@ -15,39 +15,28 @@ export class CustomerController {
             if (i.id === $("#txtcustomerid").val().trim()) { //Check the customer Id before include it
                 alert("Already Customer has been Exists!");
                 this.cleartextFields();
-                return;     //not run in the code
+                return;                                           //==================================not run in the code
             }
+
         }
 
 
+        if (this.IsValid()) {
             let id = $("#txtcustomerid").val().trim();
             let name = $("#txtcustomerName").val().trim();
             let address = $("#txtcustomerAddres").val().trim();
             let contact = $("#txtcustomerContact").val().trim();
             let customerObj = new Customer(id, name, address, contact);
             if (customerObj.id === "") {
-                if (customerObj.name === "") {
-                    if (customerObj.address === "") {
-                        if (customerObj.contact === "") {
-                            alert("Cannot added the table Please Enter the Contact Number");
-                            return;
-                        }
-                        alert("Cannot added the table Please Enter the Address");
-                        return;
-                    }
-                    alert("Cannot added the table Please Enter the Name ");
-                    return;
-                }
-                alert("Cannot added the table Please Enter the Id ");
+                alert("Submit Failed! Please Input Your Detail.");
                 return;
             } else {
                 this.saveCustomer(customerObj);
             }
-
-
+        }
     }
 
-    saveCustomer(cutomerObj) {// ==================================================only customer Save
+    saveCustomer(cutomerObj) {        // ==================================================only customer Save
 
         customerArray.push(cutomerObj);
         this.loadAllCustomer();
@@ -76,33 +65,34 @@ export class CustomerController {
 
 
     IsValid() {
+        //===============================================================================Regex Patterns
         let isId = /^C([0-9]){3,3}$/;
-        let isName = /^([A-z]){2,}$/;
+        let isName = /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)$/;
         let isAddress = /^([A-z]){2,}$/;
         let isContact = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|912)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\d)\d{6}$/;
 
 
         if (!isId.test($("#txtcustomerid").val())) {
-            $("#txtcustomerid").css('border', 'red');
-            $("#error-id").text(" Follow This : C001").css('color', 'red');
+            $("#txtcustomerid").css('border', '1px solid darkred');
+            $("#error-id").text(" Follow This : C001").css('color', 'darkred');
             return false;
         } else {
             if (!isName.test($("#txtcustomerName").val())) {
-                $("#txtcustomerName").css('border', 'red');
-                $("#error-name").text("Follow This: Saman Kumara").css('color', 'red');
+                $("#txtcustomerName").css('border', '1px solid darkred');
+                $("#error-name").text("Follow This: Saman Kumara").css('color', 'darkred');
                 return false;
             } else {
                 if (!isAddress.test($("#txtcustomerAddres").val())) {
-                    $("#txtcustomerAddres").css('border', 'red');
-                    $("#error-address").text("Follow This:Colombo").css('color', 'red');
+                    $("#txtcustomerAddres").css('border', '1px solid darkred');
+                    $("#error-address").text("Follow This:Colombo").css('color', 'darkred');
                     return false;
                 } else {
                     if (!isContact.test($("#txtcustomerContact").val())) {
-                        $("#txtcustomerContact").css('border', 'red');
-                        $("#error-contact").text("Follow This :0777777777 ");
+                        $("#txtcustomerContact").css('border', '1px solid darkred');
+                        $("#error-contact").text("Follow This :0777777777 ").css('color', 'darkred');
                         return false;
                     } else {
-                        return false;
+                        return true;
                     }
                 }
             }
