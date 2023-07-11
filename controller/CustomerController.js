@@ -5,7 +5,7 @@ import {customerArray} from "../db/db.js";
 export class CustomerController {
     constructor() {
         $("#btnSaveCustomer").click(this.customerHandle.bind(this));
-
+        this.txtFieldOnAction();
 
     }
 
@@ -13,12 +13,14 @@ export class CustomerController {
         for (let i of customerArray) {
             if (i.id === $("#txtcustomerid").val().trim()) { //Check the customer Id before include it
                 alert("Already Customer has been Exists!");
-                this.cleartextFields();
+
                 return;                                       //=======================================================not run in the code
             }
+
         }
 
-        if (this.IsValid()) {
+        if (this.IsValid() || this.txtFieldOnAction()) {
+
             let id = $("#txtcustomerid").val().trim();
             let name = $("#txtcustomerName").val().trim();
             let address = $("#txtcustomerAddres").val().trim();
@@ -30,7 +32,10 @@ export class CustomerController {
             } else {
                 this.saveCustomer(customerObj);
             }
+
         }
+
+
     }
 
     saveCustomer(cutomerObj) {                           //===================================================only customer Save
@@ -52,10 +57,44 @@ export class CustomerController {
     }
 
     cleartextFields() {
+
         $("#txtcustomerid").val("");
         $("#txtcustomerName").val("");
         $("#txtcustomerAddres").val("");
         $("#txtcustomerContact").val("");
+    }
+
+
+    //===================================================================key down Function "Enter"
+    txtFieldOnAction() {
+
+        $("#txtcustomerid").on('keydown', function (event) {
+            if (event.key === 'Enter') {
+                $("#txtcustomerName").focus();
+            }
+        });
+        $("#txtcustomerName").on('keydown', function (event) {
+            if (event.key === 'Enter') {
+                $("#txtcustomerAddres").focus();
+            }
+
+        });
+        $("#txtcustomerAddres").on('keydown', function (event) {
+            if (event.key === 'Enter') {
+                $("#txtcustomerContact").focus();
+            }
+        });
+
+        $("#txtcustomerContact").keydown(function (event) {
+            if (event.key === 'Enter') {
+                $("#btnSaveCustomer").focus();
+            }
+        });
+        $("#btnSaveCustomer").keydown(function (event) {
+            if (event.key === 'Enter') {
+                $("#txtcustomerid").focus();
+            }
+        });
     }
 
 
@@ -74,6 +113,7 @@ export class CustomerController {
         } else {
             $("#txtcustomerid").css('border', '2px solid #26de81');
             $("#error-id").text("");
+
         }
         if (!isName.test($("#txtcustomerName").val())) {
             $("#txtcustomerName").css('border', '2px solid #d63031');
@@ -101,6 +141,10 @@ export class CustomerController {
         }
         return true;
     }
+
+    /*  downKeyOnAction();*/
+
+
 }
 
 
