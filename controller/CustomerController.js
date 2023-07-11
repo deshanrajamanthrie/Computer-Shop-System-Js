@@ -6,6 +6,22 @@ export class CustomerController {
     constructor() {
         $("#btnSaveCustomer").click(this.customerHandle.bind(this));
         this.txtFieldOnAction();
+        $("#customerTable>tr").click(this.tableHandle.bind(this));
+
+    }
+
+    tableHandle() {
+        let id = $(this).children(":nth-child(0)").text();
+        let name = $(this).children(":nth-child(1)").text();
+        let address = $(this).children(":nth-child(2)").text();
+        let contact = $(this).children(":nth-child(3)").text();
+        console.log(id, name, address, contact);
+
+        $("#txtcustomerid").val(id);
+        $("#txtcustomerName").val(name);
+        $("#txtcustomerAddres").val(address);
+        $("#txtcustomerContact").val(contact);
+
 
     }
 
@@ -34,8 +50,6 @@ export class CustomerController {
             }
 
         }
-
-
     }
 
     saveCustomer(cutomerObj) {                           //===================================================only customer Save
