@@ -136,17 +136,18 @@
                     <form class=" row g-2 mt-4">
 
                         <div class="col-auto">
-                            <label for="searchCustomer" class="visually-hidden">Password</label>
-                            <input type="text" class="form-control txt-field" id="searchCustomer" placeholder="Search Customer">
+                            <label for="txtsearchCustomer" class="visually-hidden"></label>
+                            <input type="text" class="form-control txt-field" id="txtsearchCustomer"
+                                   placeholder="Search Customer">
                         </div>
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-3">Search</button>
+                            <button id="searchCustomer" type="submit" class="btn btn-primary mb-3">Search</button>
                         </div>
                     </form>
                     <div class="d-grid gap-2 d-md-block col-sm-6">
                         <button id="btnSaveCustomer" class="btn btn-outline-success w-25" type="button">Save</button>
-                        <button class="btn btn-outline-info w-25" type="button">Update</button>
-                        <button class="btn btn-outline-danger w-25" type="button">Delete</button>
+                        <button id="btnUpdatesCustomer" class="btn btn-outline-info w-25" type="button">Update</button>
+                        <button id="btnDeleteCustomer" class="btn btn-outline-danger w-25" type="button">Delete</button>
                     </div>
                 </div>
                 <div class="col   col-sm-6 me-5">     <!-- table Represent-->
@@ -160,6 +161,7 @@
                         </tr>
                         </thead>
                         <tbody class="table-group-divider bg-opacity-25 " id="customerTable">
+
 
                         </tbody>
 

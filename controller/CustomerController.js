@@ -7,8 +7,12 @@ export class CustomerController {
         $("#btnSaveCustomer").click(this.customerHandle.bind(this));
         this.txtFieldOnAction();
         $("#customerTable>tr").click(this.tableHandle.bind(this));
-
+        $("#searchCustomer").click(this.customerSearch.bind(this));
+        $("#btnUpdatesCustomer").click(this.updateCustomer.bind(this));
+        $("#btnDeleteCustomer").click(this.deleteCustomer.bind(this));
+        this.customerArray2 = customerArray;
     }
+
 
     tableHandle() {
         let id = $(this).children(":nth-child(0)").text();
@@ -21,15 +25,17 @@ export class CustomerController {
         $("#txtcustomerName").val(name);
         $("#txtcustomerAddres").val(address);
         $("#txtcustomerContact").val(contact);
-
-
     }
+
+    /*  updateCustomer(){
+          alert("Hello Update");
+      }*/
+
 
     customerHandle() {
         for (let i of customerArray) {
             if (i.id === $("#txtcustomerid").val().trim()) { //Check the customer Id before include it
                 alert("Already Customer has been Exists!");
-
                 return;                                       //=======================================================not run in the code
             }
 
@@ -47,9 +53,10 @@ export class CustomerController {
                 return;
             } else {
                 this.saveCustomer(customerObj);
-            }
 
+            }
         }
+        this.tableHandle();
     }
 
     saveCustomer(cutomerObj) {                           //===================================================only customer Save
@@ -71,7 +78,6 @@ export class CustomerController {
     }
 
     cleartextFields() {
-
         $("#txtcustomerid").val("");
         $("#txtcustomerName").val("");
         $("#txtcustomerAddres").val("");
@@ -157,6 +163,70 @@ export class CustomerController {
     }
 
     /*  downKeyOnAction();*/
+
+    customerSearch() {
+        let custId = $("#txtsearchCustomer").val();
+        let responced = this.searchId(custId);
+        if (responced) {
+            $("#txtcustomerid").val(responced.id);
+            $("#txtcustomerName").val(responced.name);
+            $("#txtcustomerAddres").val(responced.address);
+            $("#txtcustomerContact").val(responced.contact);
+        } else {
+
+        }
+    }
+
+    updateCustomer() {
+        if (this.IsValid()) {
+            let id = $("#txtcustomerid").val();
+            let name = $("#txtcustomerName").val();
+            let address = $("#txtcustomerAddres").val();
+            let contact = $("#txtcustomerContact").val();
+
+            this.customerArray2.forEach((e) => {
+                    if (e.id === id) {
+                        e.name = name;
+                        e.address = address;
+                        e.contact = contact;
+                    }
+                }
+            );
+            this.loadAllCustomer();
+        }
+    }
+
+    deleteCustomer() {
+        let ids = $("#txtsearchCustomer").val();
+        this.customerArray2.forEach((event) => {
+            if (event.id === ids) {
+              this.customerArray2.splice(event.id,1);
+            }
+        });
+        this.loadAllCustomer();
+    }
+
+
+    /* this.customerList2= this.customerList2.filter(function (e){ return e._id !== $("#customerID").val()});
+     this.loadAllCustomer();*/
+
+    /* deleteCustomer() {
+         =this.customerArray.filter(function (e) {
+             return e._id !== $("#txtcustomerid").val()
+         })
+
+
+     }*/
+
+    searchId(custId) {
+        for (let i = 0; i < customerArray.length; i++) {
+            if (customerArray[i].id === custId) {
+                return customerArray[i];
+            }
+        }
+    }
+
+//=========================================================Delete Customer OnAction
 
 
 }
