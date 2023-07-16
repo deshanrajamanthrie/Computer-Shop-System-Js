@@ -23,7 +23,7 @@ class ItemController {
         let unitPrize = $("#txtItemUnitPrize").val();
         let itemobj = new Item(code, name, qty, unitPrize);
 
-        if (itemobj.code || itemobj.name || itemobj.qty || itemobj.unitPrize) {
+        if ((itemobj.code || itemobj.name || itemobj.qty || itemobj.unitPrize) === "") {
             alert("Submit Failed! Please Input Your Detail");
             return;
         } else {
