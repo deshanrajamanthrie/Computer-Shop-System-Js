@@ -28,8 +28,8 @@ class ItemController {
             return;
         } else {
             this.saveItem(itemobj);
-
         }
+        this.clearTextField();
 
 
     }
@@ -46,7 +46,15 @@ class ItemController {
             let printRow = `<tr><th>${this.itemsarray2[i].code}</th><th>${this.itemsarray2[i].name}</th><th>${this.itemsarray2[i].qty}</th><th>${this.itemsarray2[i].unitPrize}</th></tr>`;
             $("#item-Table").append(printRow);
         }
+        this.clearTextField();
 
+    }
+
+    clearTextField() {
+        $("#txtItemid").val("");
+        $("#txtItemName").val("");
+        $("#txtItemqty").val("");
+        $("#txtItemUnitPrize").val("")
     }
 
 
