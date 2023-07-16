@@ -11,6 +11,7 @@ export class CustomerController {
         $("#btnUpdatesCustomer").click(this.updateCustomer.bind(this));
         $("#btnDeleteCustomer").click(this.deleteCustomer.bind(this));
         this.customerArray2 = customerArray;
+        console.log(this.customerArray2);
     }
 
 
@@ -197,13 +198,15 @@ export class CustomerController {
     }
 
     deleteCustomer() {
-        let ids = $("#txtsearchCustomer").val();
-        this.customerArray2.forEach((event) => {
-            if (event.id === ids) {
-              this.customerArray2.splice(event.id,1);
-            }
-        });
+        /*   alert("Helo")*/
+        this.customerArray2 = this.customerArray2.filter(ev);
+
+        function ev() {
+            return ev._id !== $("#txtcustomerid").val();
+        }
+
         this.loadAllCustomer();
+
     }
 
 

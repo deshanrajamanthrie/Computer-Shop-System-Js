@@ -5,5 +5,6 @@ var customerArray = new Array(); //customerArray
 
 var itemsArray = new Array();//Item Array
 
-export {customerArray}
+export {customerArray,itemsArray}
+
 

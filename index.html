@@ -65,7 +65,7 @@
         }
 
         .txt-field {
-            border-radius: 15px;
+            border-radius: 5px;
         }
 
 
@@ -180,25 +180,29 @@
     </main>
     <main id="item-3rdPage" class="customer-page bg-warning  bg-gradient bg-dark-subtle">
         <section class="container-fluid ps-5 ">
-            <span class="container   fw-bold h4"><div class="align-items-end"> ITEM MANAGE</div></span>
+            <span class="container fw-bold h4"><div class="align-items-end"> ITEM MANAGE</div></span>
             <section class="row">
                 <div class="col  ">
                     <label class="label-color  mt-4 " for="txtItemid">Item ID</label>
-                    <input id="txtItemid" class="form-control form-control-sm  w-75" type="text"
-                           placeholder="ID" aria-label="default input example">
+                    <input id="txtItemid" class="form-control form-control-sm  w-75 txt-field" type="text"
+                           placeholder="I001" aria-label="default input example">
+                    <p id="error-itemId" class="letters-errs-define"></p>
 
-                    <label class=" label-color  mt-4" for="txtItemName">Item Name</label>
+                    <label class=" label-color  " for="txtItemName">Item Name</label>
                     <input id="txtItemName" class="form-control form-control-sm w-75" type="text" placeholder="Name"
                            aria-label="default input example">
+                    <p id="error-itemName" class="letters-errs-define"></p>
 
-                    <label class="label-color mt-4" for="txtItemqty">Item Qty</label>
-                    <input id="txtItemqty" class="form-control  form-control-sm w-75" type="text" placeholder="Qty"
+                    <label class="label-color " for="txtItemqty">Item Qty</label>
+                    <input id="txtItemqty" class="form-control  form-control-sm w-75" type="text" placeholder="100"
                            aria-label="default input example">
+                    <p id="error-itemQty" class="letters-errs-define"></p>
 
-                    <label class="label-color mt-4" for="txtItemUnitPrize">Item Unit Price</label>
+                    <label class="label-color " for="txtItemUnitPrize">Item Unit Price</label>
                     <input id="txtItemUnitPrize" class="form-control form-control-sm w-75" type="text"
                            placeholder="Unit Price"
                            aria-label="default input example">
+                    <p id="error-itemunitPrize" class="letters-errs-define"></p>
                     <!--    ////////////////////////////////////////////////////-->
                     <form class=" row g-2 mt-4">
 
@@ -211,9 +215,10 @@
                         </div>
                     </form>
                     <div class="d-grid gap-2 d-md-block col-sm-6">
-                        <button class="btn btn-outline-success w-25" type="button">Save</button>
-                        <button class="btn btn-outline-info w-25" type="button">Update</button>
-                        <button class="btn btn-outline-danger w-25" type="button">Delete</button>
+                        <button id="btnItemSave" class="btn btn-outline-success w-25" type="button">Save</button>
+                        <button id="btnItemUpdate" class="btn btn-outline-info w-25" type="button">Update</button>
+                        <button  id="btnItemDelete" class="btn btn-outline-danger w-25" type="button">Delete</button>
+
                     </div>
                 </div>
                 <div class="col col-sm-6 me-5">     <!-- table Represent-->
@@ -227,13 +232,7 @@
                         </tr>
                         </thead>
                         <tbody class="table-group-divider bg-opacity-25">
-                        <tr>
-                            <td>I0-001</td>
-                            <td>AsusLap</td>
-                            <td>10</td>
-                            <td>100000.00</td>
 
-                        </tr>
 
                         </tbody>
                     </table>
