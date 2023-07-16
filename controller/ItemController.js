@@ -1,29 +1,51 @@
 import {Item} from "../model/Item.js";
-import {itemsArray} from "../db/db.js";
+import {customerArray, itemsArray} from "../db/db.js";
 
 class ItemController {
     constructor() {
         $("#btnItemSave").click(this.itemHandle.bind(this));
+        this.itemsarray2 = itemsArray;
 
 
     }
 
     itemHandle() {
-        this.saveCustomer();
-    }
+        for (let i in itemsArray) {
+            if (itemsArray[i].code === $("#txtItemid").val()) {
+                alert("Already Exists!")
+                return;
+            }
+        }
 
-    saveCustomer() {
         let code = $("#txtItemid").val();
         let name = $("#txtItemName").val();
         let qty = $("#txtItemqty").val();
         let unitPrize = $("#txtItemUnitPrize").val();
-        let item = new Item(code, name, qty, unitPrize);
+        let itemobj = new Item(code, name, qty, unitPrize);
 
-        this.loadAllItem(item);
+        if (itemobj.code || itemobj.name || itemobj.qty || itemobj.unitPrize) {
+            alert("Submit Failed! Please Input Your Detail");
+            return;
+        } else {
+            this.saveItem(itemobj);
+
+        }
+
 
     }
 
+    saveItem(itemobj) {
+        let itemAdd = itemsArray.push(itemobj);
+        console.log(itemAdd);
+        this.loadAllItem();
+    }
+
     loadAllItem() {
+        $("#item-Table").empty();
+        for (let i in this.itemsarray2) {
+            let printRow = `<tr><th>${this.itemsarray2[i].code}</th><th>${this.itemsarray2[i].name}</th><th>${this.itemsarray2[i].qty}</th><th>${this.itemsarray2[i].unitPrize}</th></tr>`;
+            $("#item-Table").append(printRow);
+        }
 
     }
 
