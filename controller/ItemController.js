@@ -1,10 +1,11 @@
 import {Item} from "../model/Item.js";
-import {customerArray, itemsArray} from "../db/db.js";
+import {itemsArray} from "../db/db.js";
 
 class ItemController {
     constructor() {
         $("#btnItemSave").click(this.itemHandle.bind(this));
         $("#btnItemSearch").click(this.itemSearch.bind(this));
+        $("#btnItemUpdate").click(this.itemUpdateHandle.bind(this));
         this.itemsarray2 = itemsArray;
 
 
@@ -23,13 +24,11 @@ class ItemController {
         let unitPrize = $("#txtItemUnitPrize").val();
         let itemobj = new Item(code, name, qty, unitPrize);
 
-        if ((itemobj.code || itemobj.name || itemobj.qty || itemobj.unitPrize) === "") {
+        if ((itemobj.code && itemobj.name && itemobj.qty && itemobj.unitPrize) === "") {
             alert("Submit Failed! Please Input Your Detail");
-            return;
         } else {
             this.saveItem(itemobj);
         }
-        this.clearTextField();
     }
 
     saveItem(itemobj) {
@@ -41,7 +40,7 @@ class ItemController {
     loadAllItem() {
         $("#item-Table").empty();
         for (let i in this.itemsarray2) {
-            let printRow = `<tr><th>${this.itemsarray2[i].code}</th><th>${this.itemsarray2[i].name}</th><th>${this.itemsarray2[i].qty}</th><th>${this.itemsarray2[i].unitPrize}</th></tr>`;
+            let printRow = `<tr><th>${this.itemsarray2[i].code}</th><th>${this.itemsarray2[i].name}</th><th>${this.itemsarray2[i].qty}</th><th>${this.itemsarray2[i].unitPriceitem}</th></tr>`;
             $("#item-Table").append(printRow);
         }
         this.clearTextField();
@@ -53,21 +52,35 @@ class ItemController {
                 $("#txtItemid").val(e._code);
                 $("#txtItemName").val(e._name);
                 $("#txtItemqty").val(e._qty);
-                $("#txtItemUnitPrize").val(e._unitPrice);
+                $("#txtItemUnitPrize").val(e._unitPriceitem);
             } else {
                 alert("Not Find Item Please try Agin");
             }
-
-
-        })
+        });
     }
 
+    itemUpdateHandle() {
+
+        let upName = $("#txtItemName").val();
+        let upqty = $("#txtItemqty").val();
+        let upUnit = $("#txtItemUnitPrize").val();
+
+        this.itemsarray2.forEach((e) => {
+            if (e._code === $("#txtItemid").val()) {
+                e._name = upName;
+                e._qty = upqty;
+                e.unitPrize = upUnit;
+            }
+        });
+        this.loadAllItem();
+    }
     clearTextField() {
         $("#txtItemid").val("");
         $("#txtItemName").val("");
         $("#txtItemqty").val("");
         $("#txtItemUnitPrize").val("")
     }
+    //Regex settle
 
 
 }

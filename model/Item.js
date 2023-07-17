@@ -1,4 +1,13 @@
 export class Item {
+
+    constructor(code, name, qty, unitPriceitem) {
+        this._code = code;
+        this._name = name;
+        this._qty = qty;
+        this._unitPriceitem = unitPriceitem;
+    }
+
+
     get code() {
         return this._code;
     }
@@ -23,18 +32,12 @@ export class Item {
         this._qty = value;
     }
 
-    get unitPrice() {
+    get unitPriceitem() {
         return this._unitPrice;
     }
 
-    set unitPrice(value) {
+    set unitPriceitem(value) {
         this._unitPrice = value;
     }
-    constructor(code,name,qty,unitPrice) {
-        this._code=code;
-        this._name=name;
-        this._qty=qty;
-        this.unitPrize=unitPrice;
-        this._unitPrice = unitPrice;
-    }
+
 }
