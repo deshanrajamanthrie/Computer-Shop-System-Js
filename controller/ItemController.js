@@ -113,6 +113,15 @@ class ItemController {
             $("#error-itemQty").text("");
 
         }
+        if (isUnit.test($("#txtItemUnitPrize").val())) {
+            $("#txtItemUnitPrize").css('border', '2px solid #d63031');
+            $("#error-itemunitPrize").text(" Follow This : 100").css('color', '#d63031');
+
+        } else {
+            $("#txtItemUnitPrize").css('border', '2px solid #26de81');
+            $("#error-itemunitPrize").text("");
+
+        }
 
 
     }
