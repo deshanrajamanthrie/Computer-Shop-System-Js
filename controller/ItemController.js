@@ -7,9 +7,32 @@ class ItemController {
         $("#btnItemSearch").click(this.itemSearch.bind(this));
         $("#btnItemUpdate").click(this.itemUpdateHandle.bind(this));
         /*this.isValid();*/
+        this.textFieldOnAction();
         this.itemsarray2 = itemsArray;
 
+    }
 
+    textFieldOnAction() {
+        $("#txtItemid").keydown(function (event) {
+            if (event.key === 'Enter') {
+                $("#txtItemName").focus();
+            }
+        });
+        $("#txtItemName").keydown(function (event) {
+            if (event.key === 'Enter') {
+                $("#txtItemqty").focus();
+            }
+        });
+        $("#txtItemqty").keydown(function (event) {
+            if (event.key === 'Enter') {
+                $("#txtItemUnitPrize").focus();
+            }
+        });
+        $("#txtItemUnitPrize").keydown(function (event) {
+            if (event.key === 'Enter') {
+                $("#btnItemSave").focus();
+            }
+        });
     }
 
     itemHandle() {
