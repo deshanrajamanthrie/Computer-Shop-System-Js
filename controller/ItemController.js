@@ -6,6 +6,7 @@ class ItemController {
         $("#btnItemSave").click(this.itemHandle.bind(this));
         $("#btnItemSearch").click(this.itemSearch.bind(this));
         $("#btnItemUpdate").click(this.itemUpdateHandle.bind(this));
+        /*this.isValid();*/
         this.itemsarray2 = itemsArray;
 
 
@@ -18,16 +19,17 @@ class ItemController {
                 return;
             }
         }
-        let code = $("#txtItemid").val();
-        let name = $("#txtItemName").val();
-        let qty = $("#txtItemqty").val();
-        let unitPrize = $("#txtItemUnitPrize").val();
-        let itemobj = new Item(code, name, qty, unitPrize);
-
-        if ((itemobj.code && itemobj.name && itemobj.qty && itemobj.unitPrize) === "") {
-            alert("Submit Failed! Please Input Your Detail");
-        } else {
-            this.saveItem(itemobj);
+        if (this.isValid()) {
+            let code = $("#txtItemid").val();
+            let name = $("#txtItemName").val();
+            let qty = $("#txtItemqty").val();
+            let unitPrize = $("#txtItemUnitPrize").val();
+            let itemobj = new Item(code, name, qty, unitPrize);
+            if ((itemobj.code && itemobj.name && itemobj.qty && itemobj.unitPrize) === "") {
+                alert("Submit Failed! Please Input Your Detail");
+            } else {
+                this.saveItem(itemobj);
+            }
         }
     }
 
@@ -53,12 +55,17 @@ class ItemController {
                 $("#txtItemName").val(e._name);
                 $("#txtItemqty").val(e._qty);
                 $("#txtItemUnitPrize").val(e._unitPriceitem);
-            } else {
-                alert("Not Find Item Please try Agin");
             }
         });
+
+
     }
 
+    /* else {
+     alert("Not Find Item Please try Agin");
+     return;
+ }
+ */
     itemUpdateHandle() {
 
         let upName = $("#txtItemName").val();
@@ -69,7 +76,7 @@ class ItemController {
             if (e._code === $("#txtItemid").val()) {
                 e._name = upName;
                 e._qty = upqty;
-                e.unitPrize = upUnit;
+                e._unitPriceitem = upUnit;
             }
         });
         this.loadAllItem();
@@ -84,20 +91,20 @@ class ItemController {
 
     //Regex settle
     isValid() {
-        let iscode = /^I([0-9]){3,3}$/;
+        let iscode = /^M([0-9]){3,3}$/;
         let isType = /^[A-Za-z]+-[0-9]{4}$|^[A-Za-z\s]+$/;
         let isQty = /^-?\d+(?:\.\d+)?$/;
         let isUnit = /-?\d+(?:\.\d+)?$/;
 
-        if (iscode.test($("#txtItemid").val())) {
+        if (!iscode.test($("#txtItemid").val())) {
             $("#txtItemid").css('border', '2px solid #d63031');
-            $("#error-itemId").text(" Follow This : I001").css('color', '#d63031');
+            $("#error-ItemId").text(" Follow This : M001").css('color', '#d63031');
             return false;
         } else {
             $("#txtItemid").css('border', '2px solid #26de81');
-            $("#error-itemId").text("");
+            $("#error-ItemId").text("");
         }
-        if (isType.test($("#txtItemName").val())) {
+        if (!isType.test($("#txtItemName").val())) {
             $("#txtItemName").css('border', '2px solid #d63031');
             $("#error-itemName").text(" Follow This : Laptop").css('color', '#d63031');
         } else {
@@ -105,7 +112,7 @@ class ItemController {
             $("#error-itemName").text("");
 
         }
-        if (isQty.test($("#txtItemqty").val())) {
+        if (!isQty.test($("#txtItemqty").val())) {
             $("#txtItemqty").css('border', '2px solid #d63031');
             $("#error-itemQty").text(" Follow This : 100").css('color', '#d63031');
         } else {
@@ -113,17 +120,15 @@ class ItemController {
             $("#error-itemQty").text("");
 
         }
-        if (isUnit.test($("#txtItemUnitPrize").val())) {
+        if (!isUnit.test($("#txtItemUnitPrize").val())) {
             $("#txtItemUnitPrize").css('border', '2px solid #d63031');
-            $("#error-itemunitPrize").text(" Follow This : 100").css('color', '#d63031');
+            $("#error-itemunitPrize").text(" Follow This : 1000.00").css('color', '#d63031');
 
         } else {
             $("#txtItemUnitPrize").css('border', '2px solid #26de81');
             $("#error-itemunitPrize").text("");
-
         }
-
-
+        return true;
     }
 
 

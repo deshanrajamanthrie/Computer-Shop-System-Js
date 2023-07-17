@@ -33,11 +33,11 @@ export class Item {
     }
 
     get unitPriceitem() {
-        return this._unitPrice;
+        return this._unitPriceitem;
     }
 
     set unitPriceitem(value) {
-        this._unitPrice = value;
+        this._unitPriceitem = value;
     }
 
 }
