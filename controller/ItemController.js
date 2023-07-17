@@ -74,13 +74,48 @@ class ItemController {
         });
         this.loadAllItem();
     }
+
     clearTextField() {
         $("#txtItemid").val("");
         $("#txtItemName").val("");
         $("#txtItemqty").val("");
         $("#txtItemUnitPrize").val("")
     }
+
     //Regex settle
+    isValid() {
+        let iscode = /^I([0-9]){3,3}$/;
+        let isType = /^[A-Za-z]+-[0-9]{4}$|^[A-Za-z\s]+$/;
+        let isQty = /^-?\d+(?:\.\d+)?$/;
+        let isUnit = /-?\d+(?:\.\d+)?$/;
+
+        if (iscode.test($("#txtItemid").val())) {
+            $("#txtItemid").css('border', '2px solid #d63031');
+            $("#error-itemId").text(" Follow This : I001").css('color', '#d63031');
+            return false;
+        } else {
+            $("#txtItemid").css('border', '2px solid #26de81');
+            $("#error-itemId").text("");
+        }
+        if (isType.test($("#txtItemName").val())) {
+            $("#txtItemName").css('border', '2px solid #d63031');
+            $("#error-itemName").text(" Follow This : Laptop").css('color', '#d63031');
+        } else {
+            $("#txtItemName").css('border', '2px solid #26de81');
+            $("#error-itemName").text("");
+
+        }
+        if (isQty.test($("#txtItemqty").val())) {
+            $("#txtItemqty").css('border', '2px solid #d63031');
+            $("#error-itemQty").text(" Follow This : 100").css('color', '#d63031');
+        } else {
+            $("#txtItemqty").css('border', '2px solid #26de81');
+            $("#error-itemQty").text("");
+
+        }
+
+
+    }
 
 
 }
