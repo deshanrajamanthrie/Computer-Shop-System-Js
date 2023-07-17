@@ -4,6 +4,7 @@ import {customerArray, itemsArray} from "../db/db.js";
 class ItemController {
     constructor() {
         $("#btnItemSave").click(this.itemHandle.bind(this));
+        $("#btnItemSearch").click(this.itemSearch.bind(this));
         this.itemsarray2 = itemsArray;
 
 
@@ -16,7 +17,6 @@ class ItemController {
                 return;
             }
         }
-
         let code = $("#txtItemid").val();
         let name = $("#txtItemName").val();
         let qty = $("#txtItemqty").val();
@@ -30,8 +30,6 @@ class ItemController {
             this.saveItem(itemobj);
         }
         this.clearTextField();
-
-
     }
 
     saveItem(itemobj) {
@@ -47,7 +45,21 @@ class ItemController {
             $("#item-Table").append(printRow);
         }
         this.clearTextField();
+    }
 
+    itemSearch() {
+        this.itemsarray2.filter(function (e) {
+            if (e._code === $("#searchItem").val()) {
+                $("#txtItemid").val(e._code);
+                $("#txtItemName").val(e._name);
+                $("#txtItemqty").val(e._qty);
+                $("#txtItemUnitPrize").val(e._unitPrice);
+            } else {
+                alert("Not Find Item Please try Agin");
+            }
+
+
+        })
     }
 
     clearTextField() {
