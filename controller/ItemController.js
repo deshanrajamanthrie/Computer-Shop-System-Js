@@ -55,24 +55,25 @@ class ItemController {
                 $("#txtItemName").val(e._name);
                 $("#txtItemqty").val(e._qty);
                 $("#txtItemUnitPrize").val(e._unitPriceitem);
-            }
+            }/*{
+                if (e._code !== $("#searchItem").val()) {
+                    $("#searchItem").css('border', '2px solid #d63031');
+                    $("#not-Define-item").text("Have Not Define an Item").css('color', 'red');
+                }
+            }*/
         });
 
 
     }
 
-    /* else {
-     alert("Not Find Item Please try Agin");
-     return;
- }
- */
+    //================================================Update items
     itemUpdateHandle() {
 
         let upName = $("#txtItemName").val();
         let upqty = $("#txtItemqty").val();
         let upUnit = $("#txtItemUnitPrize").val();
 
-        this.itemsarray2.forEach((e) => {
+        this.itemsarray2.forEach((e) => {           //get all items array's data after check item id and input id
             if (e._code === $("#txtItemid").val()) {
                 e._name = upName;
                 e._qty = upqty;
@@ -82,6 +83,7 @@ class ItemController {
         this.loadAllItem();
     }
 
+    //===============clear the text Field
     clearTextField() {
         $("#txtItemid").val("");
         $("#txtItemName").val("");
@@ -89,7 +91,7 @@ class ItemController {
         $("#txtItemUnitPrize").val("")
     }
 
-    //Regex settle
+    //=======================Regex settle
     isValid() {
         let iscode = /^M([0-9]){3,3}$/;
         let isType = /^[A-Za-z]+-[0-9]{4}$|^[A-Za-z\s]+$/;
@@ -99,7 +101,7 @@ class ItemController {
         if (!iscode.test($("#txtItemid").val())) {
             $("#txtItemid").css('border', '2px solid #d63031');
             $("#error-ItemId").text(" Follow This : M001").css('color', '#d63031');
-            return false;
+            return false;                  //if not compatible the input that regex pattern ,there fore we must return false
         } else {
             $("#txtItemid").css('border', '2px solid #26de81');
             $("#error-ItemId").text("");
@@ -107,6 +109,7 @@ class ItemController {
         if (!isType.test($("#txtItemName").val())) {
             $("#txtItemName").css('border', '2px solid #d63031');
             $("#error-itemName").text(" Follow This : Laptop").css('color', '#d63031');
+            return false;
         } else {
             $("#txtItemName").css('border', '2px solid #26de81');
             $("#error-itemName").text("");
@@ -115,6 +118,7 @@ class ItemController {
         if (!isQty.test($("#txtItemqty").val())) {
             $("#txtItemqty").css('border', '2px solid #d63031');
             $("#error-itemQty").text(" Follow This : 100").css('color', '#d63031');
+            return false;
         } else {
             $("#txtItemqty").css('border', '2px solid #26de81');
             $("#error-itemQty").text("");
@@ -123,7 +127,7 @@ class ItemController {
         if (!isUnit.test($("#txtItemUnitPrize").val())) {
             $("#txtItemUnitPrize").css('border', '2px solid #d63031');
             $("#error-itemunitPrize").text(" Follow This : 1000.00").css('color', '#d63031');
-
+            return false;
         } else {
             $("#txtItemUnitPrize").css('border', '2px solid #26de81');
             $("#error-itemunitPrize").text("");
