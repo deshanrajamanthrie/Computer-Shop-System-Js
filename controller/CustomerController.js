@@ -11,6 +11,7 @@ export class CustomerController {
         $("#btnUpdatesCustomer").click(this.updateCustomer.bind(this));
         $("#btnDeleteCustomer").click(this.deleteCustomer.bind(this));
         this.customerArray2 = customerArray;
+        this.loadAllCustomer();
         console.log(this.customerArray2);
     }
 
@@ -70,8 +71,8 @@ export class CustomerController {
 
     loadAllCustomer() {
         $("#customerTable").empty();                                 //this use statement for do empty table
-        for (let i in customerArray) {
-            let printRow = `<tr><th>${customerArray[i].id}</th><th>${customerArray[i].name}</th><th>${customerArray[i].address}</th><th>${customerArray[i].contact}</th></tr>`;
+        for (let i of this.customerArray2) {
+            let printRow = `<tr><th>${i.id}</th><th>${i.name}</th><th>${i.address}</th><th>${i.contact}</th></tr>`;
             console.log(printRow);
             $("#customerTable").append(printRow);
             this.cleartextFields();
@@ -199,11 +200,12 @@ export class CustomerController {
 
     deleteCustomer() {
         /*   alert("Helo")*/
-        this.customerArray2 = this.customerArray2.filter(ev);
-
-        function ev() {
-            return ev._id !== $("#txtcustomerid").val();
-        }
+        this.customerArray2 = this.customerArray2.filter(e => {
+            return e._id !== $("#txtcustomerid").val();
+        });
+        this.customerArray2.forEach(e =>{
+           console.log(e)
+        });
 
         this.loadAllCustomer();
 
