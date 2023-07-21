@@ -1,13 +1,18 @@
 import {Customer} from "../model/Customer.js";
+import {Item} from "../model/Item.js";
 
 var customerArray = new Array(); //customerArray
-customerArray.push(new Customer("C001","Kamal Weerasingha","Colombo","076227759"));
-customerArray.push(new Customer("C002","Nimal Santha","Colombo","075217759"));
-customerArray.push(new Customer("C003","Herath Bandara","Colombo","075027759"));
+customerArray.push(new Customer("C001","Kamal Weerasingha","Colombo","0762277559"));
+customerArray.push(new Customer("C002","Nimal Santha","Colombo","0752177592"));
+customerArray.push(new Customer("C003","Herath Bandara","Colombo","0750277596"));
 
 
 
 var itemsArray = new Array();//Item Array
+itemsArray.push(new Item("M001","Laptop",6,85000.00));
+itemsArray.push(new Item("M002","Mouse",6,1000.00))
+
+
 
 export {customerArray,itemsArray}
 

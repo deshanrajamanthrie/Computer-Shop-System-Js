@@ -6,9 +6,11 @@ class ItemController {
         $("#btnItemSave").click(this.itemHandle.bind(this));
         $("#btnItemSearch").click(this.itemSearch.bind(this));
         $("#btnItemUpdate").click(this.itemUpdateHandle.bind(this));
-        /*this.isValid();*/
+        /* this.isValid();*/
         this.textFieldOnAction();
+
         this.itemsarray2 = itemsArray;
+        this.loadAllItem();
 
     }
 
@@ -36,8 +38,8 @@ class ItemController {
     }
 
     itemHandle() {
-        for (let i in itemsArray) {
-            if (itemsArray[i].code === $("#txtItemid").val()) {
+        for (let i in this.itemsarray2) {
+            if (this.itemsarray2[i].code === $("#txtItemid").val()) {
                 alert("Already Exists!")
                 return;
             }
@@ -57,7 +59,7 @@ class ItemController {
     }
 
     saveItem(itemobj) {
-        let itemAdd = itemsArray.push(itemobj);
+        let itemAdd = this.itemsarray2.push(itemobj);
         console.log(itemAdd);
         this.loadAllItem();
     }

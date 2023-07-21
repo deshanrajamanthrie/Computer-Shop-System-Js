@@ -55,7 +55,6 @@ export class CustomerController {
                 return;
             } else {
                 this.saveCustomer(customerObj);
-
             }
         }
         this.tableHandle();
@@ -75,16 +74,12 @@ export class CustomerController {
             let printRow = `<tr><th>${i.id}</th><th>${i.name}</th><th>${i.address}</th><th>${i.contact}</th></tr>`;
             console.log(printRow);
             $("#customerTable").append(printRow);
-            this.cleartextFields();
+
         }
+        this.cleartextFields();
     }
 
-    cleartextFields() {
-        $("#txtcustomerid").val("");
-        $("#txtcustomerName").val("");
-        $("#txtcustomerAddres").val("");
-        $("#txtcustomerContact").val("");
-    }
+
 
 
     //===================================================================key down Function "Enter"
@@ -131,6 +126,8 @@ export class CustomerController {
         if (!isId.test($("#txtcustomerid").val())) {
             $("#txtcustomerid").css('border', '2px solid #d63031');
             $("#error-id").text(" Follow This : C001").css('color', '#d63031');
+            // $("#txtcustomerid").val("");
+
             return false;
         } else {
             $("#txtcustomerid").css('border', '2px solid #26de81');
@@ -140,6 +137,7 @@ export class CustomerController {
         if (!isName.test($("#txtcustomerName").val())) {
             $("#txtcustomerName").css('border', '2px solid #d63031');
             $("#error-name").text("Follow This: Saman Kumara").css('color', '#d63031');
+            //$("#txtcustomerName").val("");
             return false;
         } else {
             $("#txtcustomerName").css('border', '2px solid #26de81');
@@ -148,6 +146,7 @@ export class CustomerController {
         if (!isAddress.test($("#txtcustomerAddres").val())) {
             $("#txtcustomerAddres").css('border', '2px solid #d63031');
             $("#error-address").text("Follow This:Colombo").css('color', '#d63031');
+            // $("#txtcustomerAddres").val("");
             return false;
         } else {
             $("#txtcustomerAddres").css('border', '2px solid #26de81');
@@ -157,6 +156,7 @@ export class CustomerController {
             $("#txtcustomerContact").css('border', '2px solid #d63031');
             $("#error-contact").text("Follow This :0777777777 ").css('color', '#d63031');
             return false;
+            // $("#txtcustomerContact").val("");
         } else {
             $("#txtcustomerContact").css('border', '2px solid #26de81');
             $("#error-contact").text("");
@@ -199,30 +199,16 @@ export class CustomerController {
     }
 
     deleteCustomer() {
-        /*   alert("Helo")*/
         this.customerArray2 = this.customerArray2.filter(e => {
             return e._id !== $("#txtcustomerid").val();
         });
-        this.customerArray2.forEach(e =>{
-           console.log(e)
+        this.customerArray2.forEach(e => {
+            console.log(e)
         });
 
         this.loadAllCustomer();
 
     }
-
-
-    /* this.customerList2= this.customerList2.filter(function (e){ return e._id !== $("#customerID").val()});
-     this.loadAllCustomer();*/
-
-    /* deleteCustomer() {
-         =this.customerArray.filter(function (e) {
-             return e._id !== $("#txtcustomerid").val()
-         })
-
-
-     }*/
-
     searchId(custId) {
         for (let i = 0; i < customerArray.length; i++) {
             if (customerArray[i].id === custId) {
@@ -231,8 +217,13 @@ export class CustomerController {
         }
     }
 
-//=========================================================Delete Customer OnAction
 
+    cleartextFields() {
+        $("#txtcustomerid").val("");
+        $("#txtcustomerName").val("");
+        $("#txtcustomerAddres").val("");
+        $("#txtcustomerContact").val("");
+    }
 
 }
 
