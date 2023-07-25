@@ -14,10 +14,10 @@ itemsArray.push(new Item("M001", "Laptop", 6, 85000.00));
 itemsArray.push(new Item("M002", "Mouse", 6, 1000.00));
 itemsArray.push(new Item("M003", "Speaker Set", 6, 3000.00));
 
-var order = new Order(); //Order Array
-var orderDetail = new OrderDetail();//
+var orderArray = new Order(); //Order Array
+var orderDetailArray = new OrderDetail();//
 
 
-export {customerArray, itemsArray, order, orderDetail}
+export {customerArray, itemsArray, orderArray, orderDetailArray}
 
 
